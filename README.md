@@ -93,8 +93,10 @@ TFTP在思科路由器上用到很多，用來備份配置以及升級路由器�
 ```Address	or	name	of	remote	host	[]?	10.10.10.1```
 
 然后你必须输入其它路由器上的	flash	镜像的文件名：
-```Source	filename	[]?	/	c2500-js-1.121-17.bin
- Destination	filename	[c2500-js-1.121-17.bin]?```
+```
+Source	filename	[]?	/	c2500-js-1.121-17.bin
+ Destination	filename	[c2500-js-1.121-17.bin]?
+```
 
 + 保存备份:`copy	flash	tftp	`
 + 在备份当前配置文件:`running-config	tftp`
