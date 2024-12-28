@@ -120,3 +120,43 @@ HTTPS 是 HTTP 的安全版本，使用了安全的套接字層技術（Secure S
 如你不能連接上某台設備，你可以輸入 Ctrl+Shift+6 然後輸入X來退出。
 用`debug telnet`命令來調試 Telnet。
 
+### 互聯網控制消息協定,Internet	Control	Message	Protocol,ICMP
+ICMP 是一個在某網路上用IP數據包（或數據報）來報告問題或故障的協定。
+ICMP發出一個ping數據包來測試遠端主機的連通性。 
+
+在一台網路設備上運行 ping命令時，便生成一個請求回應的數據包（a echo request packet），發往目的設備。
+目的設備收到該請求回應后，生成一條回應應答。
+
+下面是其它幾個表示回應 ping 數據包的符號所表示的意義： 
++ ！ -- 每個回應有一個感嘆號 
++ . -- 一次超時一個句點 
++ U -- 目的主機不可達 
++ N -- 網络不可達消息 
++ P -- 協定不可達消息 
++ Q -- 源抑制訊息 
++ M -- 無法分片 
++ ？ -- 未知資料包類型
+ping失敗可以說明網路有問題，也可能是由於 ICMP 流量在網路上被阻止了。
+(因為 ping 常會成為一種網路攻擊的方法，ICMP 通常會被阻止。)
+
+### 追蹤路由，Traceroute 
+Traceroute 可以用來測試網路的連通性
+在Traceroute 數據包的進行過程中，記錄就會一跳接一跳地顯示出來。 
+每跳會測試 3 次。一個星號（*）表明該跳超出了時間限制。
+思科路由器的命令是`traceroute`， Windows 計算機是`tracert`。
+Traceroute 的輸出字段有如下定義： 
++ ... -- 超時 
++ U -- 連接埠不可達消息 
++ H -- 主機不可達消息 
++ P -- 協定不可達消息 
++ N -- 網络不可達消息 
++ ？ -- 未知包類型 
++ Q -- 收到源抑制（source quench received）
+
+### 位址解析協定，Address Resolution Protocol， ARP
+有兩種尋址方式來鑒別網路主機 --IP（或三層）位址以及本地 MAC 位址。
+RFC 826 中定義的位址解析，是指 IOS從網路層（或 IP）位址得到數據鏈路層地址(MAC)的過程。
+
+ARP 將一個已知的IP位址解析為MAC位址。 當主機需要在其網路上傳輸數據時，它需要知道 另一主機的 MAC 位址。 
+主機會檢查它的 ARP 快取，如果沒有需要的 MAC 位址，你就發出一條 ARP 廣播消息來找到該主機，如圖所示。
+![image](https://github.com/user-attachments/assets/640ab2aa-95b8-4afb-a460-b117e91c13a5)
