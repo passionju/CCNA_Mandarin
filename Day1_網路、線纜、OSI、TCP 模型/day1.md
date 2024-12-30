@@ -73,9 +73,10 @@ TCP提供流控、佇列（sequencing）、視窗機制以及錯誤偵測。
 3. 第三層 -- 介面有使用正確的IP位址以及子網路遮罩？
 4. 第四層 -- 有使用正確的路由協定嗎？ 從路由器通告的網路是正確的嗎？
 
-###對比
+### 對比
 ![image](https://github.com/user-attachments/assets/85038998-e06e-4223-9f20-2bc871769680)
-新版第一層tcp分為 資料連結層Data Link和物理層Phycial
+新版第一層tcp分為 資料連結層Data Link和物理層Phycial  
+***"All	People	Seem	To	Need	Data	Processing"***
 
 #### 文件傳輸協定，File Transfer Protocol，FTP
 FTP 使用了 20 和 21 號端口。
@@ -206,8 +207,15 @@ SNMP使用 UDP 端口 161 和 162 。
 
 ### Crossover	cables
 連接相同類型設備   
-Ex: 兩台PC , 兩台Switch
+Ex: 兩台PC , 兩台Switch,一台pc一台router
+pc,router一組
+switch,hub一組
+![alt text](image-5.png)
 
+### Straight through cable
+連接不同類型設備
+Ex:一台pc一台switch
+![alt text](image-4.png)
 ### WAN	Cables
 + serial cables  
 + smart serial cable 用於廣域網路介面卡（WAN Interface Cards, WICs）。  
@@ -221,8 +229,13 @@ ex: clock rate	64000(或者任何可用的速率，单位是	bits	per　second)
 
 ### 實作:設定clock rate
 首先，要確認哪一台路由器接上了DCE線  
-1. 先`#sh ip int brie`查看router上所有接口 (完整:`show ip	interface brief`)  
+1. 先`#sh ip int brie`查看router上所有接口 (完整:`show ip interface brief`)  
 2. 輸入`show controllers [接口编号]`
 3. `clock	rate ?`查看有哪些速度
 4. ex: `clock rate	64000`
 ![alt text](image-3.png)
+
+
+# 問題  
+![alt text](image-6.png)
+![alt text](image-7.png)
