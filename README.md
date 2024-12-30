@@ -1,6 +1,7 @@
 ﻿# CCNA筆記
+由[60天通过思科认证的网络工程师考试](https://github.com/gnu4cn/ccna60d)整理後編寫的自我筆記
  
-## OSI	和	TCP	模型
+# OSI	和	TCP	模型
 ### OSI 模型:
 ![image](https://github.com/user-attachments/assets/861efffc-61fc-4243-9735-4a2f9598dd1a)
 
@@ -160,3 +161,68 @@ RFC 826 中定義的位址解析，是指 IOS從網路層（或 IP）位址得�
 ARP 將一個已知的IP位址解析為MAC位址。 當主機需要在其網路上傳輸數據時，它需要知道 另一主機的 MAC 位址。 
 主機會檢查它的 ARP 快取，如果沒有需要的 MAC 位址，你就發出一條 ARP 廣播消息來找到該主機，如圖所示。
 ![image](https://github.com/user-attachments/assets/640ab2aa-95b8-4afb-a460-b117e91c13a5)
+
+### 代理ARP
+把一個主機(通常為router)作為對另一個主機ARP進行應答。
+整个过程R1以为自己访问的是R3，实际上真正去访问R3的是R2，R1 却并不知道这个代理过程，这就是所谓的ARP代理，通常用于跨网段访问
+ex:路由器將自己MAC回傳給發送ARP廣播請求發送者，實現MAC位址代理
+
+它能使得在不影響路由表的情況下新增一個新的Router
+
+![alt text](image.png)
+
+### 反向位址解析協議，Reverse Address Resolution Protocol, RARP
+
+### 無辜ARP，	Gratuitous	Address	Resolution	Protocol, GARP
+主動更新網路中其他裝置的ARP快取。
+GARP通常用於網路設備的IP位址發生變化時，請確保其他設備能夠及時更新其ARP快取。
+
+### 簡單網絡管理協議 (Simple Network Management Protocol, SNMP)
+SNMP使用 UDP 端口 161 和 162 。
+
+### 安全版超文本传输协议，Hyper Text Transfer Protocol Secure, HTTPS
+带有 TLS/SSL 的HTTP（HTTPS）使用 443端口。
+
+
+# 線纜和介質，Cables and Media
+***思科喜歡將線纜規格有關的問題偷偷摸摸地放到考試中去，所以務必記住這個表格 所以務必記住這個表格。***
+
+![alt text](image-1.png)
+前面數字如1000表示資料傳輸速度有多少 Mbps ，「Base」代表基頻傳輸--baseband ， 而「T」則是指雙絞線 -- twisted pair
+
++ 半双工（half	duplex）是指数据只能在**一个方向**上传输
++ 全双工则是数据能够在**两个方向**上同时传输。
+  
+用` show	interface X `命令就可以檢查接口的雙工配置。  
+~~ x可為 ex:	FastEthernet0  
+  
+### 實作:在switch上發現有一port為半雙工  
+`show	interfaces status`得知port接口配置
+![alt text](image-2.png)  
++ 修復
+1.`int f1/0/2`進入f1/0/2
+2. `duplex full`改成全雙工
+
+
+### Crossover	cables
+連接相同類型設備   
+Ex: 兩台PC , 兩台Switch
+
+### WAN	Cables
++ serial cables  
++ smart serial cable 用於廣域網路介面卡（WAN Interface Cards, WICs）。  
+使用這個需要適洽的接口卡  
+每條連線都可以使用不同的封裝類型，例如一條使用 PPP，另一條使用訊框中繼 
+
+#### DCE	和	DTE 線纜
+DCE: 你需要在 DCE 端指定時鐘(a	clock	rate)  
+ex: clock rate	64000(或者任何可用的速率，单位是	bits	per　second)
+
+
+### 實作:設定clock rate
+首先，要確認哪一台路由器接上了DCE線  
+1. 先`#sh ip int brie`查看router上所有接口 (完整:`show ip	interface brief`)  
+2. 輸入`show controllers [接口编号]`
+3. `clock	rate ?`查看有哪些速度
+4. ex: `clock rate	64000`
+![alt text](image-3.png)
