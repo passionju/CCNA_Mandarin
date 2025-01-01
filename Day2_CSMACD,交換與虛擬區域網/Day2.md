@@ -26,7 +26,10 @@
 ## 自動協商 Auto-negotiation
 >此技術讓設備在傳輸流量前，就雙工和速率上達成一致。  
 
-auto-negotiation 仍可能会引起问题 (當網卡或廠商交換機與 IEEE 802.3u 規範不完全一致時，問題就會發生。)
+auto-negotiation 仍可能会引起问题 (當網卡或廠商交換機與 IEEE 802.3u 規範不完全一致時，問題就會發生。)  
+
+### 設定端口速率    
+![alt text](image-25.png)
 
 ## Switching Frames  
 >交換器是為交換訊框而生（也就是說，將來自某進入介面的訊框傳送到正確的出口介面）  
@@ -293,6 +296,10 @@ VLAN1通常被視為原生VLAN（native VLAN），而**原生VLAN上的流量不
 ![alt text](image-17.png)
  其模式為我要（desirable）,封裝方式是ISL（n代表 negotiated,協商出的）
  ![alt text](image-18.png)
+
+`switchport trunk encapsulation` 指令設定連接埠的中繼協議，  
+而指令 `switchport mode trunk` 指令則是將連接埠設定為中繼工作方式。  
+![alt text](image-26.png)
 
 ### 重要：   
 將交換器某連接埠設定為中繼模式前，請先設定其中繼封裝方式。  
