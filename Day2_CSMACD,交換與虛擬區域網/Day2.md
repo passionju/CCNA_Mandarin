@@ -1,4 +1,4 @@
-#  Day2_CSMA/CD, 交換與虛擬區域網
+ #  Day2_CSMA/CD, 交換與虛擬區域網
 
 ## CSMA/CD  （載波偵測多重存取/碰撞偵測）運作過程如下：
 
@@ -250,9 +250,9 @@ ISL 和 802.1Q 是用來確保這些 VLANs 在穿過交換器中繼連結後，�
 VLAN1通常被視為原生VLAN（native VLAN），而**原生VLAN上的流量不被標記**
 
 ## 交換機端 
-+ 接入端口 or 接入鏈路 , access links or ports
-+ 中繼端口 or 中鏈路 , trunk links or ports
-+ 動態端口
+>+ 接入端口 or 接入鏈路 , access links or ports  
+>+ 中繼端口 or 中鏈路 , trunk links or ports
+>+ 動態端口
 
 ### 接入鏈路 Access	Links
 >只能是唯一VLAN的一个成员。連接該接入鏈路的設備並不知曉任何其它 VLANs 的存在。  
@@ -276,3 +276,43 @@ VLAN1通常被視為原生VLAN（native VLAN），而**原生VLAN上的流量不
 
 在將一台交換機與其它交換機連接時，你需要將其接口設置為中繼接口，以令到VLANs都被標記上。  
 `switchport` 命令的作用也是如此
+
+### 練習
+1. 創建vlan  
+![alt text](image-15.png)  
+`show vlan`命令来查看交换上存在着哪些 VLANs。  
+介面設定指令 `switchport access vlan [vlan#]`,    
+
+2. 將連接埠 fa0/1 加入VLAN 5 中去。
+![alt text](image-16.png)
+在像 3560 這樣的三層交換器上，在將某個連接埠加入到一個 VLAN 之前，  
+你務必使用指令`switchport mode access`將連接埠手動設定為存取模式。
+
+3. 讓我們來將兩台交換器的 fa0/15 介面配置為中繼連結。  
+`show interface trunk`
+![alt text](image-17.png)
+ 其模式為我要（desirable）,封裝方式是ISL（n代表 negotiated,協商出的）
+ ![alt text](image-18.png)
+
+### 重要：   
+將交換器某連接埠設定為中繼模式前，請先設定其中繼封裝方式。  
+而這個規則 又不適用於 2960 交換器（目前CCNA中使用到的型號）  
+，2960 交換器只使用dot1q（802.1Q的另一種叫法）封裝。  
+因此，2960 交換器上的 `switchport trunk encapsulation` 指令沒用。  
+
+ 將交換器連接埠配置為 802.1Q 而不是 ISL，如下面的輸出。
+ ![alt text](image-19.png)
+
+ `switchport trunk native vlan <vlan#>`更改預設原生vlan  
+ 中繼鏈路上的兩個介面原生 VLAN 必須 匹配
+
+ ### 重要： 
+ 交換器能儲存所有 VLAN 的訊息，在重新啟動後也還在。  
+ 如你打算交換器以空白配置啟動，就需要在交換器上執行 `delete vlan.dat` 指令，如下面的輸出所示。  
+ 這只適用於真實交換機，在諸如Packet Tracer等交換器模擬器是做不到的。
+ ![alt text](image-23.png)
+ ![alt text](image-24.png)
+
+
+ 
+
