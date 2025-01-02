@@ -1,4 +1,21 @@
- #  Day2_CSMA/CD, 交換與虛擬區域網
+#  Day2_CSMA/CD, 交換與虛擬區域網
+## 本次用到指令  
+
+show mac-address-table (查看 table)  
+show version  
+show vlan  
+interface vlan1 
+ip add 192.168.1.3 255.255.255.0  (给 VLAN 配置 IP 地址)  
+no shutdown  
+show interface vlan1  
+ip default-gateway 192.168.1.1   (告诉交换机往哪还需告诉交换机往哪里发送所有里发送所有IP流量，因为2层交换机没有建立路由表的能力)  
+line vty 0  (開啟協議)  
+password cisco  
+login  
+transport input ssh  (允許 SSH 連線進入交換機，這就是說流量會被加密。  
+switchport 告诉交换机将其某个端口作为二层端口，而不是三层。)   
+
+
 
 ## CSMA/CD  （載波偵測多重存取/碰撞偵測）運作過程如下：
 
@@ -119,8 +136,9 @@ Runt侏儒幀(小於64bytes的Frame)會消除,所以也叫Runt-free
 
 `show	version`   
 `show vlan`![alt text](image-4.png) 
-+ 如果你打算為交換器新增一個 IP 位址（就是管理位址），以便透過網路連接到該交換機，只需給某個 VLAN 配置 IP 位址即可；本例中就是 VLAN1。  
-+ VLAN1 預設是關閉的預設是關閉的，你需要執行一個 `no shutdown` 指令來開啟它  
++ 如果你打算為交換器新增一個 IP 位址（就是管理位址），以便透過網路連接到該交換機，只需給某個 VLAN 配置 IP 位址即可；本例中就是 VLAN1。 
+![alt text](image-27.png) 
++ VLAN1 預設是關閉的，你需要執行一個 `no shutdown` 指令來開啟它  
 + 還需告訴交換器往哪裡還需告訴交換器往哪裡發送所有里發送所有 IP 流量，  
 因為 2 層交換器沒有建立路由表的能力
 ![alt text](image-5.png)  
@@ -272,13 +290,13 @@ VLAN1通常被視為原生VLAN（native VLAN），而**原生VLAN上的流量不
 ![alt text](image-13.png)
 
 ### 練習
-**將其某個端口作為二層端口，而不是三層。**  
+**將其某個端口作為二層端口，而不是三層。**  `switchport`
 
 ![alt text](image-14.png)
 註: 在 2960系列交换机上，encapsulation不被識別，因為他只有一種型態
 
 在將一台交換機與其它交換機連接時，你需要將其接口設置為中繼接口，以令到VLANs都被標記上。  
-`switchport` 命令的作用也是如此
+`switchport` 命令的作用也是如此，`port link-type trunk` //接口下把接口配置成trunk
 
 ### 練習
 1. 創建vlan  
@@ -319,6 +337,7 @@ VLAN1通常被視為原生VLAN（native VLAN），而**原生VLAN上的流量不
  這只適用於真實交換機，在諸如Packet Tracer等交換器模擬器是做不到的。
  ![alt text](image-23.png)
  ![alt text](image-24.png)
+
 
 
  
