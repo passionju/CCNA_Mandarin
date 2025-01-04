@@ -203,7 +203,14 @@ ex: 當交換器上配置了有 5 個、10 個，甚至 20 個額外的 VLANs �
 但在圖 3.4 中，僅使用了一個實體路由器接口。
 
 #### 在該主要路由器接口上配置出了子接口 :`interface [name].[subinterface number]`  
-#### 子接口配置命令: `encapsulation	[isl|dot1q]	[vlan]`
+#### 子接口配置命令: `encapsulation	[isl|dot1q]	[vlan]`後面可加`native`設為原生vlan
+那條連接路由器的單一鏈路，必須設定為中繼鏈路，這是因為路由器不支援 DTP。  
+以下示範使用單一實體介面的 VLAN 間路由配置（又稱作「單臂路由，router-on-a-stick」）。    
+![alt text](image-11.png)  
+![alt text](image-12.png)  
+圖 3.4 中繪出的有兩個 VLAN，管理用的額外VLAN 且該管理 VLAN 將會被設定為原生 VLAN。  
+![alt text](image-13.png)
+
 ### 採用交換器虛擬接口的 VLAN 間路由
 **優點**:    
 **缺點**:   
