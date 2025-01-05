@@ -205,7 +205,7 @@ ex: 當交換器上配置了有 5 個、10 個，甚至 20 個額外的 VLANs �
 
 上圖3.4和圖3.3描繪了相同lan。  
 但在圖 3.4 中，僅使用了一個實體路由器接口。
-
+<mark>同一個vlan中可以不只一個子網路，但很不推薦</mark>
 #### 在該主要路由器接口上配置出了子接口 :`interface [name].[subinterface number]`  
 #### 子接口配置命令: `encapsulation	[isl|dot1q]	[vlan]`後面可加`native`設為原生vlan
 那條連接路由器的單一鏈路，必須設定為中繼鏈路，這是因為路由器不支援 DTP。  
@@ -256,8 +256,7 @@ ex: 當交換器上配置了有 5 個、10 個，甚至 20 個額外的 VLANs �
 >接口設定指令`no switchport`對這些接口進行配置，以允許管理員在其上配置 IP 位址。  
  --- 将交换机接口从交换机端口模式更改为路由器接口模式  
 
-**優點**:    
-**缺點**:   
+
 
  多層交換器也支援交換器虛擬接口（Switch Virtual Interfaces,<mark> SVIs</mark>）技術。 
 #### SVIs:是一系列代表了 VLAN的邏輯接口。  
@@ -430,6 +429,39 @@ VTP 允許 VLAN 資訊在交換網路（the switched network）上 宣告/擴散
  因為匹配的 VTP 域名，同時有著**較高修訂號的一台交換機被配置為 VTP 伺服器**，  
  或者**當 VTP 用戶端而接入網路時**，它的資料庫將會被通告給其它交換機，進而潛在地將它們各自現有的 VTP 資料庫進行**替換**。
 
+# VLAN故障排除基礎 
+
+### VLAN 間路由無效，Inter-VLAN routing not working :    
++ 檢查**鏈路、路由器**是否正確，  
++ 檢查路由器子介面有配置了**正確的封裝方式**和 VLAN，  
+同時子介面的 IP 位址是那些主機的預設閘道。   
+
++ `show interface trunk` 指令將提供所需資訊。
+### 無法建立 VLANs :  
++ 檢查交換器的 VTP 模式是否被設定成了 **“client”**，模式為 “client” 時，是不能建立 VLANs 的。
+
++ `show vtp status` 指令將提供所需的信息
+
+### 同一 VLAN 中的主機之間不能通訊  
++ VLAN 中的主機是否都有一個屬於**相同子網路的 IP 位址**。如子網路不同，它們之間就無法通訊。  
++ 這些主機是否都是連接到**同一台交換器**。  
++ 如它們不是連接到同一交換機，就要確保交換機之間的**中繼鏈路**運作正常，  
+還要確保該 VLAN 未在允許清單中被排除/被修剪
+
+
+# 故障排除 
+![alt text](image-19.png)
+
+
+
+
+
+
+
+
+![alt text](image-20.png)
+
+
   
 
 
@@ -443,7 +475,6 @@ VTP 允許 VLAN 資訊在交換網路（the switched network）上 宣告/擴散
 
 
 
-  
 
 
 
@@ -466,6 +497,11 @@ VTP 允許 VLAN 資訊在交換網路（the switched network）上 宣告/擴散
 
 
 
+# 問題
++ 單個 VLAN 可以支援多個子網但是很不推薦
++ 一個接入鏈路（access link）只屬於一個VLAN。它只承載單一VLAN的流量
+
+![alt text](image-21.png)　　
 
 
 
@@ -479,6 +515,7 @@ VTP 允許 VLAN 資訊在交換網路（the switched network）上 宣告/擴散
 
 
 
+![alt text](image-22.png)
 
 
 
