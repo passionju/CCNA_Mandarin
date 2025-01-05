@@ -1,9 +1,11 @@
 # 第三天 中繼、DTP 及 VLAN 間路由
-## 本次用到的指令
+## 本次用到的指令  
+### vlan:
 switchport 切換變二層  
 switchport trunk encapsulation [option]  (選擇中繼連結所要使用的封裝協定。)  
 show interfaces	FastEthernet1/1	switchport  
-switchport mode	trunk  將该端口强制变成永久（静态）中继模式。  
++ switchport mode trunk  將该端口强制变成永久（静态）中继模式。  
+
 switchport nonegotiate  关闭 DISL 及 DTP 数据包发送  
 show dtp [interface <name>]	  
 show interfaces	trunk  
@@ -12,8 +14,17 @@ interface [name].[subinterface number]     在該主要路由器接口上配置�
 encapsulation	[isl|dot1q] [vlan]      子接口配置命令    
 show interface vlan	x
 show sdm prefer	命令的输出，该输出告诉你当前的 SDM	配置以及资源分配情况。   
-vtp prunning    將 VTP 修剪功能加入到你的交換器  
-
+   
++ switchport mode access     將交換機端口設置為接入模式
++ switchport access vlan 2   將一個交換機端口配置為接入模式，並將其分配到VLAN 2。
++ show vlan brief  
++ switchport trunk allowed vlan 2    在该中继链路上設置仅允许 VLAN 2。  
+### VTP:
++ vtp mode server 身份  
++ vtp domain Name 配置VTP域 
++ show vtp status  
++ vtp password Cisco321  設定密碼    
+vtp prunning    將 VTP 修剪功能加入到你的交換器 
 #  配置並驗中繼鏈路
 >中繼是一個可以承載多種流量類型，  
 每種流量類型都用一個獨特的 VLAN ID 做了標記，的交換機連接埠。
@@ -521,3 +532,18 @@ VTP 允許 VLAN 資訊在交換網路（the switched network）上 宣告/擴散
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+# 實作問題
++ 第一題需要**兩邊都要是valn2**，第一次試一邊vlan2一邊vlan3，會ping不通  
+不知道是不是因為vlan名字關係，還有注意**兩邊pc需要在同一個子網**
