@@ -1,3 +1,6 @@
+# 個人題庫總筆記  
++ [個人題庫總筆記](https://github.com/passionju/CCNA_Mandarin/blob/main/%E5%80%8B%E4%BA%BA%E9%A1%8C%E5%BA%AB%E7%AD%86%E8%A8%98/%E7%AD%86%E8%A8%98.md)  
+
 # CCNA題庫筆記  
 + [筆記1-50](https://github.com/passionju/CCNA_Mandarin/blob/main/CCNA%E9%A1%8C%E5%BA%AB%E7%AD%86%E8%A8%981-50/%E7%AD%86%E8%A8%981-50.md)  
 + [筆記51-100](https://github.com/passionju/CCNA_Mandarin/blob/main/CCNA%E9%A1%8C%E5%BA%AB%E7%AD%86%E8%A8%9851-100/%E7%AD%86%E8%A8%9851-100.md)  
@@ -7,6 +10,12 @@
 + [筆記401-500](https://github.com/passionju/CCNA_Mandarin/blob/main/CCNA%E9%A1%8C%E5%BA%AB%E7%AD%86%E8%A8%98401-500/401-500.md)  
 + [筆記501-610](https://github.com/passionju/CCNA_Mandarin/blob/main/CCNA%E9%A1%8C%E5%BA%AB%E7%AD%86%E8%A8%98501-600/501-600.md)  
 + [筆記611-700](https://github.com/passionju/CCNA_Mandarin/blob/main/CCNA%E9%A1%8C%E5%BA%AB%E7%AD%86%E8%A8%98611-700/611-700.md)  
+
+# CCNA題庫筆記-2  
++ [CCNA題庫筆記700-800](https://github.com/passionju/CCNA-2/blob/main/CCNA%E9%A1%8C%E5%BA%AB%E7%AD%86%E8%A8%98700-800/700-800.md)    
++ [CCNA題庫筆記800-900](https://github.com/passionju/CCNA-2/blob/main/CCNA%E9%A1%8C%E5%BA%AB%E7%AD%86%E8%A8%98800-900/801-900.md)  
++ [CCNA題庫筆記900-970](https://github.com/passionju/CCNA-2/blob/main/CCNA%E9%A1%8C%E5%BA%AB%E7%AD%86%E8%A8%98900-1000/900-1000.md)  
+----------------------------------------------
 
 
 # CCNA筆記
@@ -19,6 +28,23 @@
 
 + [DAY3_中繼、DTP 及 VLAN 間路由](https://github.com/passionju/CCNA_Mandarin/blob/main/CCNA60%E5%A4%A9%E7%AD%86%E8%A8%98/DAY3_%E4%B8%AD%E7%B9%BC%E3%80%81DTP%20%E5%8F%8A%20VLAN%20%E9%96%93%E8%B7%AF%E7%94%B1/day3.md)
 [DAY4_路由器和交換器安全](https://github.com/passionju/CCNA_Mandarin/blob/main/CCNA60%E5%A4%A9%E7%AD%86%E8%A8%98/DAY4_%E8%B7%AF%E7%94%B1%E5%99%A8%E5%92%8C%E4%BA%A4%E6%8F%9B%E5%99%A8%E5%AE%89%E5%85%A8/day4.md)
+
+# 特別重要東西  
+![alt text](image-2.png)  
+
+
+
+
+
+
+
+
+
+
+
+# CCNA 200-301注意事項  
++ [注意事項](https://www.pmp360.net/zh-Hant/blogs/ccna_ccnp_exams_guide_hant.html)
++ [CCNA Exam Safeguard Offer](https://learningnetworkstore.cisco.com/cisco-study-bundles/ccna-exam-safeguard-offer/EX-SG-CCNA-027329.html)  
 
 
 # 快捷指令
